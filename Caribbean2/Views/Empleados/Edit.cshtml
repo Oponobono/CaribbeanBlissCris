@@ -1,0 +1,171 @@
+﻿@model Caribbean2.Models.Empleado
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="~/css/sideBar.css">
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Topbar Star -->
+    <div class="container-fluid bg-dark px-5 d-lg-block d justify-content-around mb-2">
+        <div class="row gx-0 p-2 align-items-center">
+            <!-- Sección de botones visibles en pantallas pequeñas y grandes -->
+            <div class="btn-group-container d-flex justify-content-end">
+                <!-- Íconos visibles solo en pantallas pequeñas con tooltips -->
+                <a href="" class="btn-modern me-2 d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Iniciar sesión">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
+                <a href="" class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Registrarse">
+                    <i class="fas fa-user-plus"></i>
+                </a>
+
+                <!-- Botones completos visibles solo en pantallas grandes -->
+                <a href="" class="btn-modern me-2 d-none d-lg-inline-flex">
+                    <i class="fas fa-sign-in-alt"></i> Cerrar sesión
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+    <!-- Inicio Seccion Modificable -->
+    <h1 class="d-flex justify-content-center mt-3">Gestión de Roles</h1>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="roles-card">
+                    <div class="roles-card-header d-flex justify-content-between align-items-center">
+                        <div class="text-center flex-grow-1">
+                            <h2 class="roles-card-title">Editar Empleado</h2>
+                        </div>
+                    </div>
+                    <div class="roles-card-body p-3">
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="IdEmpleado" />
+
+                            <div class="form-group">
+                                <label asp-for="NombreEmpleado" class="control-label">Nombre Empleado</label>
+                                <input asp-for="NombreEmpleado" class="form-control" />
+                                <span asp-validation-for="NombreEmpleado" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="EmailEmpleado" class="control-label">Correo Electrónico</label>
+                                <input asp-for="EmailEmpleado" class="form-control" />
+                                <span asp-validation-for="EmailEmpleado" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group d-inline-block justify-content-center">
+                                <label for="EstadoEmpleado" class="form-label">Estado</label>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="EstadoEmpleado" asp-for="EstadoEmpleado" />
+                                    <span id="estadoLabel" class="ml-2">Inactivo</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="RolId" class="control-label">Rol</label>
+                                <select asp-for="RolId" class="form-control" asp-items="ViewBag.RolId"></select>
+                                <span asp-validation-for="RolId" class="text-danger"></span>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-success me-2">
+                                    <i class="bi bi-save"></i> Guardar
+                                </button>
+                                <a asp-action="Index" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left-circle"></i> Regresar
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Fin Seccion Modificable -->
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="~/js/index.js"></script>
+    <script src="~/js/login.js"></script>
+    <script src="~/js/sidebar.js"></script>
+    <script src="~/js/roles.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+</body>
+
+</html>
+
+<script>
+    // Al cargar la página, actualizamos el label con el estado inicial
+    window.onload = function () {
+        updateEstadoLabel();
+    };
+
+    // Función para actualizar el texto del label según el estado del switch
+    function updateEstadoLabel() {
+        var switchInput = document.getElementById('EstadoEmpleado');
+        var label = document.getElementById('estadoLabel');
+
+        // Actualizamos el texto dependiendo de si el switch está activado o no
+        if (switchInput.checked) {
+            label.textContent = "Activado";
+            label.style.color = "green";  // Puedes cambiar el color si deseas
+        } else {
+            label.textContent = "Inactivo";
+            label.style.color = "red";  // Puedes cambiar el color si deseas
+        }
+    }
+
+    // Añadimos un evento para actualizar el label cuando el switch cambie
+    document.getElementById('EstadoEmpleado').addEventListener('change', updateEstadoLabel);
+</script>
+
+

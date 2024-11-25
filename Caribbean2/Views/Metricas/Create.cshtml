@@ -1,0 +1,90 @@
+﻿@model Caribbean2.Models.Metrica
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Metrica</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IngresosTotales" class="control-label"></label>
+                <input asp-for="IngresosTotales" class="form-control" />
+                <span asp-validation-for="IngresosTotales" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TasaOcupacion" class="control-label"></label>
+                <input asp-for="TasaOcupacion" class="form-control" />
+                <span asp-validation-for="TasaOcupacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OcupacionDiaria" class="control-label"></label>
+                <input asp-for="OcupacionDiaria" class="form-control" />
+                <span asp-validation-for="OcupacionDiaria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OcupacionSemanal" class="control-label"></label>
+                <input asp-for="OcupacionSemanal" class="form-control" />
+                <span asp-validation-for="OcupacionSemanal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OcupacionMensual" class="control-label"></label>
+                <input asp-for="OcupacionMensual" class="form-control" />
+                <span asp-validation-for="OcupacionMensual" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservasNuevas" class="control-label"></label>
+                <input asp-for="ReservasNuevas" class="form-control" />
+                <span asp-validation-for="ReservasNuevas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cancelaciones" class="control-label"></label>
+                <input asp-for="Cancelaciones" class="form-control" />
+                <span asp-validation-for="Cancelaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImpactoFinancieroCancelaciones" class="control-label"></label>
+                <input asp-for="ImpactoFinancieroCancelaciones" class="form-control" />
+                <span asp-validation-for="ImpactoFinancieroCancelaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromedioDiasAnticipacionReserva" class="control-label"></label>
+                <input asp-for="PromedioDiasAnticipacionReserva" class="form-control" />
+                <span asp-validation-for="PromedioDiasAnticipacionReserva" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroHuespedes" class="control-label"></label>
+                <input asp-for="NumeroHuespedes" class="form-control" />
+                <span asp-validation-for="NumeroHuespedes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SuscritosBoletin" class="control-label"></label>
+                <input asp-for="SuscritosBoletin" class="form-control" />
+                <span asp-validation-for="SuscritosBoletin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DuracionPromedioEstadia" class="control-label"></label>
+                <input asp-for="DuracionPromedioEstadia" class="form-control" />
+                <span asp-validation-for="DuracionPromedioEstadia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
