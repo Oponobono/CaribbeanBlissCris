@@ -44,17 +44,13 @@
         <div class="row gx-0 p-2 align-items-center">
             <!-- Sección de botones visibles en pantallas pequeñas y grandes -->
             <div class="btn-group-container d-flex justify-content-end">
-                <!-- Íconos visibles solo en pantallas pequeñas con tooltips -->
-                <a href="" class="btn-modern me-2 d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Iniciar sesión">
-                    <i class="fas fa-sign-in-alt"></i>
-                </a>
-                <a href="" class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Registrarse">
-                    <i class="fas fa-user-plus"></i>
+                <a class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cerrar sesión"
+                    asp-controller="Login" asp-action="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
                 </a>
 
-                <!-- Botones completos visibles solo en pantallas grandes -->
-                <a href="" class="btn-modern me-2 d-none d-lg-inline-flex">
-                    <i class="fas fa-sign-in-alt"></i> Cerrar sesión
+                <a asp-controller="Login" asp-action="Logout" class="btn-modern me-2 d-none d-lg-inline-flex">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar sesión
                 </a>
             </div>
         </div>

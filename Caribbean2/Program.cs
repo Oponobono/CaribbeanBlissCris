@@ -51,25 +51,23 @@ app.Use(async (context, next) =>
         !path.StartsWith("/login") &&      // Login
         !path.StartsWith("/usuarios/register")) // Registro
     {
-        context.Response.Redirect("/Caribbean/Index");
+        context.Response.Redirect("/Login/Index");
         return;
     }
 
     await next();
 });
 
-app.UseStaticFiles();
+// Autorizar después de configurar el middleware global
+app.UseAuthorization();
 
-// Configuración de rutas con UseEndpoints
+// Configuración de rutas
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Caribbean}/{action=Index}/{id?}");
 });
-
-// Autorizar después de configurar las rutas
-app.UseAuthorization();
 
 app.Run();
 

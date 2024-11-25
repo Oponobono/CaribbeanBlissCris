@@ -58,6 +58,7 @@ namespace Caribbean2.Controllers
                         TempData["AlertMessage"] = "Inicio de sesión exitoso";
                         return RedirectToAction("Index", "Caribbean");
                     }
+
                 }
 
                 TempData["AlertType"] = "error";

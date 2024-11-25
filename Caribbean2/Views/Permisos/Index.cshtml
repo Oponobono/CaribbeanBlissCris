@@ -2,40 +2,387 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = null;
 }
 
-<h1>Index</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="~/css/sideBar.css">
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NombrePermiso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DescripcionPermiso)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombrePermiso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescripcionPermiso)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdPermiso">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdPermiso">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdPermiso">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <!-- DataTables Bootstrap CSS (opcional, para mejor integración con Bootstrap) -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+    <style>
+        /* Ajustar específicamente el selector de DataTables */
+        .dataTables_length select {
+            appearance: none; /* Eliminar estilos nativos del navegador */
+            -moz-appearance: none; /* Para Firefox */
+            -webkit-appearance: none; /* Para Safari/Chrome */
+            padding-right: 1.5rem; /* Espacio adicional para la flecha */
+            background: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='none'%20stroke='currentColor'%20d='M2%201L0%200M2%201l2-1'/%3E%3C/svg%3E") no-repeat right center;
+            background-size: 10px 10px; /* Tamaño de la flecha */
+            border: 1px solid #ddd; /* Ajuste para mantener consistencia visual */
+            border-radius: 4px;
+        }
+
+        /* Alinear correctamente la etiqueta y el selector */
+        .dataTables_wrapper .dataTables_length label {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Espacio entre la etiqueta y el selector */
+        }
+
+        /* Estilo base de los botones de paginación */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            background-color: transparent;
+            border: none;
+            padding: 6px 12px; /* Ajustar el espacio interno */
+            margin: 0 2px; /* Separación entre botones */
+            color: #007bff; /* Color de texto inicial */
+            border-radius: 4px; /* Bordes redondeados */
+        }
+
+            /* Estilo al pasar el mouse por los botones de paginación */
+            .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+                background-color: #28a745; /* Verde más limpio para hover */
+                color: white; /* Texto blanco para contraste */
+                border: 1px solid #1e7e34; /* Borde verde oscuro */
+            }
+
+            /* Botón activo para la página actual */
+            .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+                background-color: #28a745; /* Verde para el botón activo */
+                color: white; /* Texto blanco */
+                border: 1px solid #1e7e34; /* Borde verde oscuro */
+                pointer-events: none; /* Desactiva el hover en el botón activo */
+            }
+
+            /* Evitar el efecto grisáceo alrededor del botón */
+            .dataTables_wrapper .dataTables_paginate .paginate_button:focus {
+                outline: none; /* Elimina el contorno azul predeterminado */
+                box-shadow: none; /* Elimina sombra en foco */
+            }
+
+            /* Ajuste para botones deshabilitados */
+            .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+                color: #6c757d; /* Color gris claro */
+                background-color: transparent; /* Fondo transparente */
+                border: none;
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="menu">
+        <ion-icon name="menu-outline"></ion-icon>
+        <ion-icon name="close-outline"></ion-icon>
+    </div>
+    <div class="barra-lateral">
+        <div>
+            <div class="nombre-pagina">
+                <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                <span>CaribeanBliss</span>
+            </div>
+        </div>
+
+        <nav class="navegacion">
+            <ul>
+                <li>
+                    <a id="home" href="index.html">
+                        <ion-icon name="home-outline"></ion-icon>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dashboard.html">
+                        <ion-icon name="stats-chart-outline"></ion-icon>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="logeados.html">
+                        <ion-icon name="people-outline"></ion-icon>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="registro.html">
+                        <ion-icon name="briefcase-outline"></ion-icon>
+                        <span>Registro</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <ion-icon name="settings-outline"></ion-icon>
+                            <span>Config.</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <!-- Cambia estos enlaces por rutas dinámicas -->
+                            <a class="dropdown-item" href="@Url.Action("Index", "Roles")">
+                                <ion-icon name="key-outline"></ion-icon>
+                                <span>Roles</span>
+                            </a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Empleados")">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <span>Empleados</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <ion-icon name="bed-outline"></ion-icon>
+                            <span>Alojamiento</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="huespedes.html">
+                                <ion-icon name="person-circle-outline"></ion-icon>
+                                <span>Huespedes</span>
+                            </a>
+                            <a class="dropdown-item" href="reservas.html">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <span>Reservas</span>
+                            </a>
+                            <a class="dropdown-item" href="habitaciones.html">
+                                <ion-icon name="business-outline"></ion-icon>
+                                <span>Habitaciones</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="contacto.html">
+                        <ion-icon name="call-outline"></ion-icon>
+                        <span>Contacto</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="caribean_logo">
+            <img src="~/img/caribeanbliss_logo.png" alt="Home" srcset="">
+        </div>
+
+        <div>
+            <div class="linea"></div>
+
+            <div class="modo-oscuro">
+                <div class="info">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <span>Modo Dark</span>
+                </div>
+                <div class="switch">
+                    <div class="base">
+                        <div class="circulo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <main>
+        <!-- Topbar Star -->
+        <div class="container-fluid bg-dark px-5 d-lg-block d justify-content-around mb-2">
+            <div class="row gx-0 p-2 align-items-center">
+                <!-- Sección de botones visibles en pantallas pequeñas y grandes -->
+                <div class="btn-group-container d-flex justify-content-end">
+                    <!-- Botón de Cerrar sesión visible si el usuario está autenticado -->
+                    <a class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cerrar sesión"
+                       asp-controller="Login" asp-action="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+
+                    <a asp-controller="Login" asp-action="Logout" class="btn-modern me-2 d-none d-lg-inline-flex">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+        <!-- Inicio Seccion Modificable -->
+        <h1 class="d-flex justify-content-center mt-3">Permisos</h1>
+
+        <div class="main-content">
+            <div class="roles-section">
+                <div class="roles-card">
+                    <div class="roles-card-header d-flex justify-content-between align-items-center">
+                        <div class="text-center flex-grow-1">
+                            <h2 class="roles-card-title">Administración de Permisos</h2>
+                        </div>
+                        <div class="button-group">
+                            <a class="button" asp-action="Create">Crear Nuevo Permiso</a>
+                        </div>
+                    </div>
+                    <div class="roles-card-body p-3">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Permiso
+                                    </th>
+                                    <th>
+                                        Descripción
+                                    </th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model) {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NombrePermiso)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DescripcionPermiso)
+                                        </td>
+                                        <td>                                                
+                                            <!-- Edit Icon -->
+                                            <a asp-action="Edit" asp-route-id="@item.IdPermiso" data-bs-toggle="tooltip" title="Editar" class="icon-button edit-btn">
+                                                <ion-icon name="pencil-outline"></ion-icon>
+                                            </a> |
+                                            <!-- Details Icon -->
+                                            <a asp-action="Details" asp-route-id="@item.IdPermiso" data-bs-toggle="tooltip" title="Detalles" class="icon-button details-btn">
+                                                <ion-icon name="eye-outline"></ion-icon>
+                                            </a> |
+                                            <!-- Delete Icon -->
+                                            <a asp-action="Delete" asp-route-id="@item.IdPermiso" data-bs-toggle="tooltip" title="Eliminar" class="icon-button delete-btn">
+                                                <ion-icon name="trash-outline"></ion-icon>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Fin Seccion Modificable -->
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="~/js/index.js"></script>
+    <script src="~/js/login.js"></script>
+    <script src="~/js/sidebar.js"></script>
+    <script src="~/js/roles.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!--DataTables JS-->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <!-- DataTables Bootstrap JS (opcional) -->
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Actualiza los labels al cargar la página
+            document.querySelectorAll('.form-check-input').forEach(function (switchInput) {
+                updateEstadoLabel(switchInput);
+            });
+        });
+
+        // Función para actualizar el texto del label según el estado del switch
+        function updateEstadoLabel(switchInput) {
+            var label = switchInput.nextElementSibling;
+            if (switchInput.checked) {
+                label.textContent = "Activado";
+                label.style.color = "green";  // Cambia el color de "Activado" a verde
+            } else {
+                label.textContent = "Inactivo";
+                label.style.color = "red";  // Cambia el color de "Inactivo" a rojo
+            }
+        }
+
+        //Script DataTables
+        $(document).ready(function () {
+            // Inicializar DataTables
+            $('.table').DataTable({
+                language: {
+                    search: "Buscar:",
+                    lengthMenu: "Mostrar _MENU_ registros",
+                    info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                    paginate: {
+                        first: "Primero",
+                        last: "Último",
+                        next: "Siguiente",
+                        previous: "Anterior"
+                    },
+                    zeroRecords: "No se encontraron resultados",
+                    infoEmpty: "Mostrando 0 a 0 de 0 registros",
+                    infoFiltered: "(filtrado de _MAX_ registros totales)"
+                },
+                paging: true, // Habilita paginación
+                searching: true, // Habilita búsqueda
+                ordering: true, // Habilita ordenamiento por columnas
+                responsive: true, // Hace que la tabla sea responsiva
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var alertType = '@TempData["AlertType"]';
+            var alertMessage = '@TempData["AlertMessage"]';
+
+            if (alertType && alertMessage) {
+                Swal.fire({
+                    icon: alertType, // 'success', 'error', 'warning', 'info', 'question'
+                    title: alertType === 'success' ? 'Éxito' : 'Error',
+                    text: alertMessage,
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

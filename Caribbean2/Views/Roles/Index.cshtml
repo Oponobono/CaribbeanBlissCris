@@ -110,113 +110,149 @@
             <ion-icon name="menu-outline"></ion-icon>
             <ion-icon name="close-outline"></ion-icon>
         </div>
-        <div class="barra-lateral">
-            <div>
-                <div class="nombre-pagina">
-                    <ion-icon id="cloud" name="cloud-outline"></ion-icon>
-                    <span>CaribeanBliss</span>
-                </div>
+    <div class="barra-lateral">
+        <div>
+            <div class="nombre-pagina">
+                <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                <span>CaribeanBliss</span>
             </div>
-
-            <nav class="navegacion">
-                <ul>
-                    <li>
-                        <a id="home" href="index.html">
-                            <ion-icon name="home-outline"></ion-icon>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="dashboard.html">
-                            <ion-icon name="stats-chart-outline"></ion-icon>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="logeados.html">
-                            <ion-icon name="people-outline"></ion-icon>
-                            <span>Usuarios</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="registro.html">
-                            <ion-icon name="briefcase-outline"></ion-icon>
-                            <span>Registro</span>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                <ion-icon name="settings-outline"></ion-icon>
-                                <span>Config.</span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <!-- Cambia estos enlaces por rutas dinámicas -->
-                                <a class="dropdown-item" href="@Url.Action("Index", "Roles")">
-                                    <ion-icon name="key-outline"></ion-icon>
-                                    <span>Roles</span>
-                                </a>
-                                <a class="dropdown-item" href="@Url.Action("Index", "Empleados")">
-                                    <ion-icon name="person-outline"></ion-icon>
-                                    <span>Empleados</span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                <ion-icon name="bed-outline"></ion-icon>
-                                <span>Alojamiento</span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="huespedes.html">
-                                    <ion-icon name="person-circle-outline"></ion-icon>
-                                    <span>Huespedes</span>
-                                </a>
-                                <a class="dropdown-item" href="reservas.html">
-                                    <ion-icon name="calendar-outline"></ion-icon>
-                                    <span>Reservas</span>
-                                </a>
-                                <a class="dropdown-item" href="habitaciones.html">
-                                    <ion-icon name="business-outline"></ion-icon>
-                                    <span>Habitaciones</span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="contacto.html">
-                            <ion-icon name="call-outline"></ion-icon>
-                            <span>Contacto</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="caribean_logo">
-                <img src="~/img/caribeanbliss_logo.png" alt="Home" srcset="">
-            </div>
-
-            <div>
-                <div class="linea"></div>
-
-                <div class="modo-oscuro">
-                    <div class="info">
-                        <ion-icon name="moon-outline"></ion-icon>
-                        <span>Modo Dark</span>
-                    </div>
-                    <div class="switch">
-                        <div class="base">
-                            <div class="circulo">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
+
+        <nav class="navegacion">
+            <ul>
+                <!-- Dashboard -->
+                <li>
+                    <a href="dashboard.html">
+                        <ion-icon name="stats-chart-outline"></ion-icon>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <!-- Home -->
+                <li>
+                    <a id="home" href="index.html">
+                        <ion-icon name="home-outline"></ion-icon>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <!-- Usuarios -->
+                <li>
+                    <a href="logeados.html">
+                        <ion-icon name="people-outline"></ion-icon>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+
+                <!-- Registro -->
+                <li>
+                    <a href="registro.html">
+                        <ion-icon name="briefcase-outline"></ion-icon>
+                        <span>Registro</span>
+                    </a>
+                </li>
+
+                <!-- Permisos -->
+                <li>
+                    <a href="permisos.html">
+                        <ion-icon name="shield-checkmark-outline"></ion-icon>
+                        <span>Permisos</span>
+                    </a>
+                </li>
+
+                <!-- Suscripciones -->
+                <li>
+                    <a href="suscripciones.html">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <span>Suscripciones</span>
+                    </a>
+                </li>
+
+                <!-- Métricas -->
+                <li>
+                    <a href="metricas.html">
+                        <ion-icon name="bar-chart-outline"></ion-icon>
+                        <span>Métricas</span>
+                    </a>
+                </li>
+
+                <!-- Configuración (Visible solo para Administradores y Gerentes) -->
+                <li>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <ion-icon name="settings-outline"></ion-icon>
+                            <span>Config.</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="@Url.Action("Index", "Roles")">
+                                <ion-icon name="key-outline"></ion-icon>
+                                <span>Roles</span>
+                            </a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Empleados")">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <span>Empleados</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+
+                <!-- Alojamiento -->
+                <li>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <ion-icon name="bed-outline"></ion-icon>
+                            <span>Alojamiento</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="huespedes.html">
+                                <ion-icon name="person-circle-outline"></ion-icon>
+                                <span>Huespedes</span>
+                            </a>
+                            <a class="dropdown-item" href="reservas.html">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <span>Reservas</span>
+                            </a>
+                            <a class="dropdown-item" href="habitaciones.html">
+                                <ion-icon name="business-outline"></ion-icon>
+                                <span>Habitaciones</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Contacto -->
+                <li>
+                    <a href="contacto.html">
+                        <ion-icon name="call-outline"></ion-icon>
+                        <span>Contacto</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="caribean_logo">
+            <img src="~/img/caribeanbliss_logo.png" alt="Home" srcset="">
+        </div>
+
+        <div>
+            <div class="linea"></div>
+
+            <div class="modo-oscuro">
+                <div class="info">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <span>Modo Dark</span>
+                </div>
+                <div class="switch">
+                    <div class="base">
+                        <div class="circulo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
         <main>
             <!-- Topbar Star -->
@@ -226,7 +262,7 @@
                     <div class="btn-group-container d-flex justify-content-end">
                         <!-- Botón de Cerrar sesión visible si el usuario está autenticado -->
                             <a class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cerrar sesión"
-                               asp-controller="Account" asp-action="Logout">
+                               asp-controller="Login" asp-action="Logout">
                                 <i class="fas fa-sign-out-alt"></i>
                             </a>
 
@@ -270,36 +306,36 @@
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model) {
-                                            <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.NombreRol)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.DescripcionRol)
-                                                </td>                                            
-                                                <td>
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" id="estadoEmpleado_@item.IdRol" @(item.EstadoRol ? "checked" : "") disabled />
-                                                        <span class="estadoLabel" id="estadoLabel_@item.IdRol">
-                                                            @(item.EstadoRol ? "Activado" : "Inactivo")
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <!-- Edit Icon -->
-                                                    <a asp-action="Edit" asp-route-id="@item.IdRol" data-bs-toggle="tooltip" title="Editar" class="icon-button edit-btn">
-                                                        <ion-icon name="pencil-outline"></ion-icon>
-                                                    </a> |
-                                                    <!-- Details Icon -->
-                                                    <a asp-action="Details" asp-route-id="@item.IdRol" data-bs-toggle="tooltip" title="Detalles" class="icon-button details-btn">
-                                                        <ion-icon name="eye-outline"></ion-icon>
-                                                    </a> |
-                                                    <!-- Delete Icon -->
-                                                    <a asp-action="Delete" asp-route-id="@item.IdRol" data-bs-toggle="tooltip" title="Eliminar" class="icon-button delete-btn">
-                                                        <ion-icon name="trash-outline"></ion-icon>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NombreRol)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DescripcionRol)
+                                            </td>                                            
+                                            <td>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="estadoEmpleado_@item.IdRol" @(item.EstadoRol ? "checked" : "") disabled />
+                                                    <span class="estadoLabel" id="estadoLabel_@item.IdRol">
+                                                        @(item.EstadoRol ? "Activado" : "Inactivo")
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <!-- Edit Icon -->
+                                                <a asp-action="Edit" asp-route-id="@item.IdRol" data-bs-toggle="tooltip" title="Editar" class="icon-button edit-btn">
+                                                    <ion-icon name="pencil-outline"></ion-icon>
+                                                </a> |
+                                                <!-- Details Icon -->
+                                                <a asp-action="Details" asp-route-id="@item.IdRol" data-bs-toggle="tooltip" title="Detalles" class="icon-button details-btn">
+                                                    <ion-icon name="eye-outline"></ion-icon>
+                                                </a> |
+                                                <!-- Delete Icon -->
+                                                <a asp-action="Delete" asp-route-id="@item.IdRol" data-bs-toggle="tooltip" title="Eliminar" class="icon-button delete-btn">
+                                                    <ion-icon name="trash-outline"></ion-icon>
+                                                </a>
+                                            </td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
